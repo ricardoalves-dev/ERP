@@ -50,9 +50,9 @@ end;
 
 function TModelConexaoDB.Conectar: Boolean;
 begin
-
-  FConexao.Connected := False;
-  FConexao.Connected := True;
+  FConexao.LoginPrompt := False;
+  FConexao.Connected   := False;
+  FConexao.Connected   := True;
 
   Result := FConexao.Connected;
 end;

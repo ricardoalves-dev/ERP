@@ -41,7 +41,6 @@ begin
 
   with (FConexao as TSQLConnection), (FConexao as TSQLConnection).Params do
   begin
-    LoginPrompt                          := False;
     DriverName                           := FParametros.Driver;
     Values[TDBXPropertyNames.Database]   := FParametros.Host + '/' + FParametros.Porta.ToString + ':' + FParametros.BaseDeDados;
     Values[TDBXPropertyNames.UserName]   := FParametros.Usuario;
