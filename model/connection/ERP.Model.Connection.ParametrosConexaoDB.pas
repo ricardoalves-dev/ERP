@@ -8,7 +8,7 @@ uses
 
 type
   TParametrosConexaoDB = class(TInterfacedObject, iModelParametrosConexaoBD)
-    protected
+    private
       FHost       : string;
       FPorta      : Integer;
       FUsuario    : string;
