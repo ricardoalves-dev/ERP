@@ -13,6 +13,8 @@ object Form2: TForm2
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlClient: TPanel
@@ -25,22 +27,18 @@ object Form2: TForm2
     Padding.Left = 40
     Padding.Top = 40
     Padding.Right = 40
-    Padding.Bottom = 40
+    Padding.Bottom = 30
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 41
-    ExplicitTop = 216
-    ExplicitWidth = 217
-    ExplicitHeight = 41
     object labRecuperarSenha: TLabel
       AlignWithMargins = True
       Left = 45
-      Top = 226
+      Top = 236
       Width = 210
       Height = 13
       Cursor = crHandPoint
       Margins.Left = 5
-      Margins.Top = 5
+      Margins.Top = 10
       Margins.Right = 5
       Align = alBottom
       Alignment = taCenter
@@ -51,8 +49,7 @@ object Form2: TForm2
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 40
-      ExplicitTop = 230
+      ExplicitTop = 226
       ExplicitWidth = 97
     end
     object pnlTitulo: TPanel
@@ -62,7 +59,7 @@ object Form2: TForm2
       Height = 41
       Align = alTop
       BevelOuter = bvNone
-      Caption = 'L O G I N '
+      Caption = 'E R P - L O G I N'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -71,13 +68,10 @@ object Form2: TForm2
       Font.Quality = fqClearTypeNatural
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 125
-      ExplicitTop = 216
-      ExplicitWidth = 217
     end
     object pnlBotao: TPanel
       Left = 40
-      Top = 186
+      Top = 191
       Width = 220
       Height = 35
       Align = alBottom
@@ -85,7 +79,7 @@ object Form2: TForm2
       Color = 16738931
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 211
+      ExplicitTop = 186
       object btnAcessar: TSpeedButton
         Left = 0
         Top = 0
@@ -110,6 +104,7 @@ object Form2: TForm2
       Top = 110
       Width = 220
       Height = 25
+      Alignment = taCenter
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -124,12 +119,14 @@ object Form2: TForm2
       Top = 141
       Width = 220
       Height = 25
+      Alignment = taCenter
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      PasswordChar = '*'
       TabOrder = 3
       TextHint = 'Senha'
     end
@@ -149,6 +146,7 @@ object Form2: TForm2
       Height = 25
       Cursor = crHandPoint
       Align = alRight
+      OnClick = btnSairClick
     end
     object btnConfigurar: TSpeedButton
       Left = 240

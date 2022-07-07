@@ -18,6 +18,9 @@ type
     pnlCliente: TPanel;
     btnSair: TSpeedButton;
     btnConfigurar: TSpeedButton;
+    procedure btnSairClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +33,21 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm2.btnSairClick(Sender: TObject);
+begin
+  Self.Close;
+end;
+
+procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  ActiveControl := pnlClient;
+end;
 
 end.
 
