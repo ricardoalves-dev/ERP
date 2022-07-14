@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.SqlExpr, Data.DBXFirebird, Vcl.StdCtrls, Data.FMTBcd, ERP.Model.Connection.Interfaces;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.SqlExpr, Data.DBXFirebird, Vcl.StdCtrls, Data.FMTBcd, ERP.Connection.Interfaces;
 
 type
   TForm1 = class(TForm)
@@ -13,7 +13,7 @@ type
     SQLDS1: TSQLDataSet;
     procedure btn1Click(Sender: TObject);
   private
-    FConexao: iModelConexaoBD;
+   // FConexao: iConexaoBD;
     { Private declarations }
   public
     { Public declarations }
@@ -25,15 +25,16 @@ var
 implementation
 
 uses
-  ERP.Model.Connection.ConexaoDBExpress;
+  ERP.Connection.ConexaoDBExpress;
 
 {$R *.dfm}
 
 procedure TForm1.btn1Click(Sender: TObject);
 begin
-  FConexao := TConexaoDBExpress.New();
+  //FConexao := TConexaoDBExpress.New();
 
-  FConexao
+  if not TConexaoDBExpress.getInstance
+
     .Parametros
       .Host('192.168.254.234')
       .Porta(3054)
@@ -42,9 +43,7 @@ begin
       .Usuario('SYSDBA')
       .Senha('masterkey')
       .&End
-    .Conectar;
-
-  if FConexao.Conexao.Connected then
+    .Conectar then
     ShowMessage('conectado');
 end;
 

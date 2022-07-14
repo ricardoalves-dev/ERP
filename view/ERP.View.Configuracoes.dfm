@@ -1,8 +1,8 @@
-object Form3: TForm3
+object FConfiguracoes: TFConfiguracoes
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'Form3'
+  Caption = 'Configura'#231#245'es'
   ClientHeight = 303
   ClientWidth = 338
   Color = clBtnFace
@@ -74,6 +74,7 @@ object Form3: TForm3
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        OnClick = pnlBotaoSalvarClick
       end
       object pnlBotaoTestar: TPanel
         Left = 133
@@ -93,9 +94,10 @@ object Form3: TForm3
         ParentBackground = False
         ParentFont = False
         TabOrder = 1
+        OnClick = pnlBotaoTestarClick
       end
     end
-    object edtUsuario: TEdit
+    object edtServidor: TEdit
       Left = 40
       Top = 98
       Width = 193
@@ -112,7 +114,7 @@ object Form3: TForm3
       TabOrder = 2
       TextHint = 'Servidor'
     end
-    object edtSenha: TEdit
+    object edtPorta: TEdit
       Left = 239
       Top = 98
       Width = 59
@@ -130,7 +132,7 @@ object Form3: TForm3
       TabOrder = 3
       TextHint = 'Porta'
     end
-    object btnBuscar: TButtonedEdit
+    object edtBaseDados: TButtonedEdit
       Left = 40
       Top = 139
       Width = 258

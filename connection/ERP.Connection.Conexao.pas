@@ -1,24 +1,24 @@
-unit ERP.Model.Connection.Conexao;
+unit ERP.Connection.Conexao;
 
 interface
 
 uses
-  ERP.Model.Connection.Interfaces,
+  ERP.Connection.Interfaces,
   Data.DB,
-  ERP.Model.Connection.ParametrosConexaoDB;
+  ERP.Connection.ParametrosConexaoDB;
 
 type
-  TModelConexaoDB = class(TInterfacedObject, iModelConexaoBD)
+  TConexaoDB = class abstract(TInterfacedObject, iConexaoBD)
     protected
       FConexao    : TCustomConnection;
-      FParametros : iModelParametrosConexaoBD;
-    public
+      FParametros : iParametrosConexaoBD;
       constructor Create; virtual;
+    public
       destructor Destroy; override;
-      class function New: iModelConexaoBD;
+      class function New: iConexaoBD;
 
       function Conectar: Boolean; virtual;
-      function Parametros: iModelParametrosConexaoBD;
+      function Parametros: iParametrosConexaoBD;
       function Conexao: TCustomConnection;
   end;
 
@@ -27,28 +27,28 @@ implementation
 
 { TModelConexaoDB }
 
-constructor TModelConexaoDB.Create;
+constructor TConexaoDB.Create;
 begin
   FParametros := TParametrosConexaoDB.New(Self);
 end;
 
-destructor TModelConexaoDB.Destroy;
+destructor TConexaoDB.Destroy;
 begin
   //
   inherited;
 end;
 
-class function TModelConexaoDB.New: iModelConexaoBD;
+class function TConexaoDB.New: iConexaoBD;
 begin
   Result := Self.Create;
 end;
 
-function TModelConexaoDB.Parametros: iModelParametrosConexaoBD;
+function TConexaoDB.Parametros: iParametrosConexaoBD;
 begin
   Result := FParametros;
 end;
 
-function TModelConexaoDB.Conectar: Boolean;
+function TConexaoDB.Conectar: Boolean;
 begin
   FConexao.LoginPrompt := False;
   FConexao.Connected   := False;
@@ -57,7 +57,7 @@ begin
   Result := FConexao.Connected;
 end;
 
-function TModelConexaoDB.Conexao: TCustomConnection;
+function TConexaoDB.Conexao: TCustomConnection;
 begin
   Result := FConexao;
 end;

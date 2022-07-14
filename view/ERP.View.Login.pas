@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, JvExExtCtrls, JvExtComponent, JvPanel, Vcl.Buttons, Data.DB, Data.SqlExpr, ERP.Classes.Secao;
 
 type
   TForm2 = class(TForm)
@@ -21,6 +21,7 @@ type
     procedure btnSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure btnAcessarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,7 +33,39 @@ var
 
 implementation
 
+uses
+  ERP.View.Configuracoes;
+
 {$R *.dfm}
+
+procedure TForm2.btnAcessarClick(Sender: TObject);
+begin
+  try
+    TSecao
+      .getInstance
+        .Usuario
+          .Nome(edtUsuario.Text)
+          .Senha(edtSenha.Text)
+          .Autenticar;
+  except
+    begin
+      ShowMessage('Erro ao verificar parâmetros');
+      FConfiguracoes := TFConfiguracoes.Create(Self);
+      try
+        if FConfiguracoes.ShowModal() <> mrOk then
+          Application.Terminate;
+      finally
+        FreeAndNil(FConfiguracoes);
+      end;
+    end;
+
+  end;
+
+  // VERIFICAR USUÁRIO E SENHA
+
+  // CONECTAR
+
+end;
 
 procedure TForm2.btnSairClick(Sender: TObject);
 begin

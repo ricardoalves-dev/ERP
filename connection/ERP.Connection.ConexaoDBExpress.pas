@@ -1,18 +1,19 @@
-unit ERP.Model.Connection.ConexaoDBExpress;
+unit ERP.Connection.ConexaoDBExpress;
 
 interface
 
 uses
-  ERP.Model.Connection.Conexao,
+  ERP.Connection.Conexao,
   Data.SqlExpr,
   System.SysUtils,
   Data.DBXCommon;
 
 type
-  TConexaoDBExpress = class sealed(TModelConexaoDB)
+  TConexaoDBExpress = class sealed(TConexaoDB)
 
-  public
+  protected
     constructor Create; override;
+  public
     destructor Destroy; override;
     function Conectar: Boolean; override;
 

@@ -3,7 +3,7 @@ object Form2: TForm2
   Top = 0
   BorderStyle = bsNone
   Caption = 'Form2'
-  ClientHeight = 304
+  ClientHeight = 310
   ClientWidth = 300
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,13 +19,13 @@ object Form2: TForm2
   TextHeight = 13
   object pnlClient: TPanel
     Left = 0
-    Top = 25
+    Top = 33
     Width = 300
-    Height = 279
+    Height = 277
     Align = alClient
     BevelOuter = bvNone
     Padding.Left = 40
-    Padding.Top = 40
+    Padding.Top = 30
     Padding.Right = 40
     Padding.Bottom = 30
     ParentBackground = False
@@ -33,7 +33,7 @@ object Form2: TForm2
     object labRecuperarSenha: TLabel
       AlignWithMargins = True
       Left = 45
-      Top = 236
+      Top = 234
       Width = 210
       Height = 13
       Cursor = crHandPoint
@@ -49,12 +49,11 @@ object Form2: TForm2
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      ExplicitTop = 226
       ExplicitWidth = 97
     end
     object pnlTitulo: TPanel
       Left = 40
-      Top = 40
+      Top = 30
       Width = 220
       Height = 41
       Align = alTop
@@ -71,7 +70,7 @@ object Form2: TForm2
     end
     object pnlBotao: TPanel
       Left = 40
-      Top = 191
+      Top = 189
       Width = 220
       Height = 35
       Align = alBottom
@@ -79,7 +78,6 @@ object Form2: TForm2
       Color = 16738931
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 186
       object btnAcessar: TSpeedButton
         Left = 0
         Top = 0
@@ -95,6 +93,7 @@ object Form2: TForm2
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        OnClick = btnAcessarClick
         ExplicitTop = 16
         ExplicitHeight = 22
       end
@@ -135,27 +134,36 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 300
-    Height = 25
+    Height = 33
     Align = alTop
     BevelOuter = bvNone
+    Padding.Left = 5
+    Padding.Top = 5
+    Padding.Right = 5
+    Padding.Bottom = 5
     TabOrder = 1
     object btnSair: TSpeedButton
-      Left = 270
-      Top = 0
+      Left = 265
+      Top = 5
       Width = 30
-      Height = 25
+      Height = 23
       Cursor = crHandPoint
       Align = alRight
       OnClick = btnSairClick
+      ExplicitLeft = 270
+      ExplicitTop = 0
+      ExplicitHeight = 25
     end
     object btnConfigurar: TSpeedButton
-      Left = 240
-      Top = 0
+      Left = 235
+      Top = 5
       Width = 30
-      Height = 25
+      Height = 23
       Cursor = crHandPoint
       Align = alRight
       ExplicitLeft = 234
+      ExplicitTop = 0
+      ExplicitHeight = 25
     end
   end
 end

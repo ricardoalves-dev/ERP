@@ -1,13 +1,13 @@
-unit ERP.Model.Connection.ParametrosConexaoDB;
+unit ERP.Connection.ParametrosConexaoDB;
 
 interface
 
 uses
-  ERP.Model.Connection.Interfaces,
+  ERP.Connection.Interfaces,
   Data.DB;
 
 type
-  TParametrosConexaoDB = class(TInterfacedObject, iModelParametrosConexaoBD)
+  TParametrosConexaoDB = class(TInterfacedObject, iParametrosConexaoBD)
     private
       FHost       : string;
       FPorta      : Integer;
@@ -17,26 +17,27 @@ type
       FDriver     : string;
 
       [weak] // Sem isso dá Memory Leak. Esse comando é necessário para não incrementar o ARC.
-      FConexao    : iModelConexaoBD;
+      FConexao    : iConexaoBD;
 
     public
-      constructor Create(Conexao: iModelConexaoBD); virtual;
+      constructor Create(Conexao: iConexaoBD); virtual;
       destructor Destroy; override;
-      class function New(Conexao: iModelConexaoBD): iModelParametrosConexaoBD;
+      class function New(Conexao: iConexaoBD): iParametrosConexaoBD;
 
-      function Host(Value: string): iModelParametrosConexaoBD; overload;
+      function Host(Value: string): iParametrosConexaoBD; overload;
       function Host: string; overload;
-      function Porta(Value: Integer): iModelParametrosConexaoBD; overload;
+      function Porta(Value: Integer): iParametrosConexaoBD; overload;
       function Porta: Integer; overload;
-      function Usuario(Value: string): iModelParametrosConexaoBD; overload;
+      function Usuario(Value: string): iParametrosConexaoBD; overload;
       function Usuario: string; overload;
-      function Senha(Value: string): iModelParametrosConexaoBD; overload;
+      function Senha(Value: string): iParametrosConexaoBD; overload;
       function Senha: string; overload;
-      function BaseDeDados(Value: string): iModelParametrosConexaoBD; overload;
+      function BaseDeDados(Value: string): iParametrosConexaoBD; overload;
       function BaseDeDados: string; overload;
-      function Driver(Value: string): iModelParametrosConexaoBD; overload;
+      function Driver(Value: string): iParametrosConexaoBD; overload;
       function Driver: string; overload;
-      function &End: iModelConexaoBD;
+      function Gravar: Boolean;
+      function &End: iConexaoBD;
   end;
 
 
@@ -46,7 +47,7 @@ implementation
 
 { TParametrosConexaoDB }
 
-constructor TParametrosConexaoDB.Create(Conexao: iModelConexaoBD);
+constructor TParametrosConexaoDB.Create(Conexao: iConexaoBD);
 begin
   FConexao := Conexao;
 end;
@@ -57,12 +58,12 @@ begin
   inherited;
 end;
 
-class function TParametrosConexaoDB.New(Conexao: iModelConexaoBD): iModelParametrosConexaoBD;
+class function TParametrosConexaoDB.New(Conexao: iConexaoBD): iParametrosConexaoBD;
 begin
   Result := Self.Create(Conexao);
 end;
 
-function TParametrosConexaoDB.Host(Value: string): iModelParametrosConexaoBD;
+function TParametrosConexaoDB.Host(Value: string): iParametrosConexaoBD;
 begin
   Result := Self;
   FHost  := Value;
@@ -73,7 +74,7 @@ begin
   Result := FHost;
 end;
 
-function TParametrosConexaoDB.Porta(Value: Integer): iModelParametrosConexaoBD;
+function TParametrosConexaoDB.Porta(Value: Integer): iParametrosConexaoBD;
 begin
   Result := Self;
   FPorta := Value;
@@ -84,7 +85,7 @@ begin
   Result := FPorta;
 end;
 
-function TParametrosConexaoDB.Usuario(Value: string): iModelParametrosConexaoBD;
+function TParametrosConexaoDB.Usuario(Value: string): iParametrosConexaoBD;
 begin
   Result   := Self;
   FUsuario := Value;
@@ -95,7 +96,7 @@ begin
   Result := FUsuario;
 end;
 
-function TParametrosConexaoDB.Senha(Value: string): iModelParametrosConexaoBD;
+function TParametrosConexaoDB.Senha(Value: string): iParametrosConexaoBD;
 begin
   Result := Self;
   FSenha := Value;
@@ -106,7 +107,7 @@ begin
   Result := FSenha;
 end;
 
-function TParametrosConexaoDB.BaseDeDados(Value: string): iModelParametrosConexaoBD;
+function TParametrosConexaoDB.BaseDeDados(Value: string): iParametrosConexaoBD;
 begin
   Result       := Self;
   FBaseDeDados := Value;
@@ -117,7 +118,7 @@ begin
   Result := FBaseDeDados;
 end;
 
-function TParametrosConexaoDB.Driver(Value: string): iModelParametrosConexaoBD;
+function TParametrosConexaoDB.Driver(Value: string): iParametrosConexaoBD;
 begin
   Result  := Self;
   FDriver := Value;
@@ -128,9 +129,14 @@ begin
   Result := FDriver;
 end;
 
-function TParametrosConexaoDB.&End: iModelConexaoBD;
+function TParametrosConexaoDB.&End: iConexaoBD;
 begin
   Result := FConexao;
+end;
+
+function TParametrosConexaoDB.Gravar: Boolean;
+begin
+  //
 end;
 
 end.
